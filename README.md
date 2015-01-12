@@ -1,4 +1,6 @@
 junkor.github.io
 ================
 
-junior's Github pages 
+junkor's Github pages.
+
+post article, practice git & familiar with markdown.
