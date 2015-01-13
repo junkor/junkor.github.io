@@ -1,47 +1,36 @@
-<!DOCTYPE html>
-<html>
+---
+layout: page
+description: "A Clean Blog Theme by Start Bootstrap"
+---
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Junkor.github.io : junkor&#39;s Github pages " />
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-    <title>Junkor</title>
-  </head>
+{% for post in paginator.posts %}
+<div class="post-preview">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+        <h2 class="post-title">            {{ post.title }}
+        </h2>
+        {% if post.subtitle %}
+        <h3 class="post-subtitle">
+            {{ post.subtitle }}
+        </h3>
+        {% endif %}
+    </a>
+    <p class="post-meta">Posted by {{ post.author }} on {{ post.date | date: "%B %-d, %Y" }}</p>
+</div>
+<hr>
+{% endfor %}
 
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <h1 id="project_title">Junkor</h1>
-          <h2 id="project_tagline">Hello, I'm junkor. You can call me Jun.</h2>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-         <section id="logo">
-			 <img id="logo_img" src="images/junkor_icon.png" alt="logo" height="260">
-		 </section>
-         
-         <section id="social-links">
-           <li>
-             <a href="https://github.com/junkor" id="link-github" style="display:inline">
-               <img src="images/github_icon.png" alt="github" height="25">
-               <i class="icon-github-alt"></i> Github
-             </a>
-           </li>
-		   
-           <li>
-             <a href="http://weibo.com/junkor" id="link-weibo">
-               <img src="images/weibo_icon.png" alt="weibo" height="25">
-               <i class="icon-weibo-alt"></i> Weibo
-             </a>
-           </li>
-         </section>
-      </section>
-    </div>
-  </body>
-</html>
+<!-- Pager -->
+{% if paginator.total_pages > 1 %}
+<ul class="pager">
+    {% if paginator.previous_page %}
+    <li class="previous">
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
+    </li>
+    {% endif %}
+    {% if paginator.next_page %}
+    <li class="next">
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
+    </li>
+    {% endif %}
+</ul>
+{% endif %}
