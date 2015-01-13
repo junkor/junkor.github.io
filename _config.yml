@@ -1,17 +1,35 @@
-# Site settings
-title: Clean Blog
-header-img: img/home-bg.jpg
-email: junlinsong@gmail.com
-description: "Write your site description here. It will be used as your sites meta description as well!"
-baseurl: ""
-url: "http://junkor.github.io"
-twitter_username: junlinsong
-github_username:  junkor
-facebook_username:  junlinsong
+# Jekyll configuration
 
-# Build settings
-markdown: kramdown
+name: Junkor
+description: A jekyll theme
+
+# url is currently only used only for the RSS feed in feed.xml
+url: http://junkor.github.io
+
+# baseurl will often be '', but for a project page on gh-pages, it needs to
+# be the project name.
+# *** IMPORTANT: If your local "jekyll serve" throws errors change this to '' or
+#     run it like so: jekyll serve --baseurl=''
+baseurl: ''
+
+# This can be '' to hide the Github nav button
+github: 'junkor'
+
+# Set this to your UA-# value, or '' to disable the block completely
+gaaccount: ''
+
+# Set this to your disqus shortname to enable comments. Note that the 'comments'
+# setting below must also be true. Individual posts can override 'comments' to
+# disable on a post-by-post basis
+disqus: ''
+comments: true
+
+permalink: /:year/:month/:title
+paginate: 3
+
 highlighter: pygments
-permalink: pretty
-paginate: 10
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+markdown: redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
+
+exclude: ['README.md', 'LICENSE']

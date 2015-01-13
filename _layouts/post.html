@@ -1,50 +1,40 @@
----
-layout: default
----
+{% include header.html %}
 
-<!-- Post Header -->
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1>{{ page.title }}</h1>
-                    {% if page.subtitle %}
-                    <h2 class="subheading">{{ page.subtitle }}</h2>
-                    {% endif %}
-                    <span class="meta">Posted by {{ page.author }} on {{ page.date | date: "%B %-d, %Y" }}</span>
-                </div>
+<div class="container container-left">
+    <div class="row">
+        <div class="col-md-3 hidden-xs">
+            {% include sidebar.html %}
+        </div>
+        <div class="col-md-9">
+          <div class="article">
+            <div class="well">
+                <h1><a href="{{ site.baseurl}}{{ page.url }}">{{ page.date | date: "%b %-d, %Y" }} - {{ page.title }}</a></h1>
+            {% if site.comments == true and page.comments == true and site.disqus != '' %}
+                <p class="author"><a href="#disqus_thread">Comments</a></p>
+            {% endif %}
+            <div class="post-content">
+            {{ content }}
             </div>
+            {% if page.comments %}
+            <div id="disqus_thread">
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+            {% endif %}
+            </div>
+          </div>
+          <div class="pagination">
+              {% if page.next %}
+                <a class="btn btn-default" href="{{ site.baseurl}}{{ page.next.url }}" class="next">Newer Post</a>
+              {% endif %}
+              {% if page.previous %}
+                <a class="btn btn-default" href="{{ site.baseurl}}{{ page.previous.url }}" class="previous">Older Post</a>
+              {% endif %}
+</div>
+
         </div>
     </div>
-</header>
+</div>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-
-				{{ content }}
-
-                <hr>
-
-                <ul class="pager">
-                    {% if page.previous.url %}
-                    <li class="previous">
-                        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">&larr; Previous Post</a>
-                    </li>
-                    {% endif %}
-                    {% if page.next.url %}
-                    <li class="next">
-                        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">Next Post &rarr;</a>
-                    </li>
-                    {% endif %}
-                </ul>
-
-            </div>
-        </div>
-    </div>
-</article>
-
-<hr>
+{% include disqus-comments.html %}
+{% include footer.html %}
