@@ -1,0 +1,17 @@
+Reduce
+----
+>文章翻译自[objc](http://www.objc.io)，原文连接：『[Reduce](http://www.objc.io/snippets/5.html)』
+
+在函数式编程中，最流行的一种操作就是Reduce（在其他语言中有时候被称作fold）。Reduce操作主要做用在数组上，并携带着一个初始值，使其与数组中的每一项进行组合。例如我们要对一个integer类型的数组进行求和，我们可以声明一个sum函数，他有一个初始值0，然后通过中间操作符"+",联合所有元素进行求和：
+
+	let sum: [Int] -> Int = { $0.reduce(0, combine: +) }
+	
+如果是求其乘积，可以使用类似的方式，不过初始值要换为了1，中间操作符换成"*"就行了：
+	
+	let product: [Int] -> Int = { $0.reduce(1, combine: *) }
+
+不过,Reduce不仅仅只能作用于Integer型数组，还可以试试下边这个函数，它用来检测bool类型数组中的的所有元素为真：
+
+	let all: [Bool] -> Bool = { $0.reduce(true, combine: { $0 && $1 }) }
+	
+Reduce是非常灵活的操作，你可以应用于任何类型的数组。甚至依据reduce来声明map和filter也是可能的，如果你想实践一下的话，这倒是个不错的练习。
