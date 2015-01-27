@@ -1,5 +1,7 @@
 排列(Permutations)
 ----
+>文章翻译自[objc](http://www.objc.io)，原文连接：『[Permutations](http://www.objc.io/snippets/10.html)』
+
 这一节，我们来看一下怎样生成一个数组所有元素的排列组合。首先，我们需要声明一个辅助函数between。它用来计算在已知序列ys中插入元素x的所有排列方式。我们可以用一个for循环来实现，不过这里，我们用map、decompose和递归来实现：
 
 	func between<T>(x: T, ys: [T]) -> [[T]] {
