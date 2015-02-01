@@ -1,0 +1,34 @@
+Combined pattern-matching
+----
+>文章翻译自[objc](http://www.objc.io)，原文连接：『[Enums instead of Booleans](http://www.objc.io/snippets/12.html)』
+
+假设你想实现一个跟枚举等价的操作符。例如，假设我们想要自己实现一个Optional类型。如果我们自己来实现Optional类型，看看下边不同的分支条件，你可能会这么写：
+
+	func ==<A: Equatable>(l: A?, r: A?) -> Bool {
+    	switch l {
+    	case .Some(let x):
+        	switch r {
+        		case .Some(let y): return x == y
+        		case .None: return false
+        	}
+    	case .None:
+        	switch r {
+        		case .None: return true
+        		case .Some(_): return false
+        	}
+    	}
+	}
+	
+不管怎样，上边的实现总有一些不必要的代码。为了取代嵌套的switch语句，我们可以简单的把两个条件组合成一个。我们可以用组合条件进行条件匹配，而不是嵌套的匹配语句：
+
+	func ==<A: Equatable>(l: A?, r: A?) -> Bool {
+    	switch (l,r) {
+    		case let (.Some(x), .Some(y)): return x == y
+    		case (.None, .None): return true
+    		default: return false
+    	}
+	}
+	
+这种实现方式听节省时间，并且代码也更简洁易懂(因为没有嵌套).这个技巧对于[解包多个optional](https://gist.github.com/tomlokhorst/f9a826bf24d16cb5f6a3)类型同样使用。
+
+在上边最后的实现里，代码还有一个小问题。如果有一个新的条件分支要加进来，对于之前的版本，switch没有使用default语句，所以编译器就会直接提醒我们记着处理所有分支，这样挺好的。不过最后的版本就不会有任何提示，因为default会处理掉任何未实现的条件分支。
