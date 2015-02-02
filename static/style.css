@@ -450,7 +450,7 @@ h1, h2, h3, h4, h5, h6{ font-weight: 500; font-weight: 700\9; color:#333; }
 .lotus .lotus-last-view { color: #a8a8a8; font-size: 12px; }
 .lotus .lotus-squ { padding: 0 10px; color: #a8a8a8; font-size: 14px;  }
 .lotus .lotus-pagebtn { border-bottom: 1px solid #dedede; margin-top: 2.2em; margin-bottom: 3px; }
-.lotus .lotus-anno { text-align: right;  padding: 5px 10px;font-size: 12px; color: #A0A0A0;
+.lotus .lotus-anno { text-align: right;  padding: 5px 10px;font-size: 10px; color: #A0A0A0;
     background: #e4e4e2;
     border-top: 1px solid #d0d0d0;
 }

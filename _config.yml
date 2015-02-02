@@ -39,10 +39,10 @@ timezone:      null
 
 #站点基础配置
 title: Junkor
-subTitle: Junkor's Tech blog by github pages.
+subTitle: Jun's Tech blog on pages.
 description: 这是 junkor 的一个博客，它是基于 github pages。在这里，主要是一些技术类文章。
 url: http://127.0.0.1:4000
-feed: /atom.xml
+feed: /feed.xml
 
 #菜单配置
 nav:
@@ -78,8 +78,8 @@ page:
   - text: objccn.io
     url: http://objccn.io
     last: true
-  - text: 友情链接
-    url: /links.html
+  - text: swifter.tips
+    url: http://swifter.tips
     last: false
 
 author:
