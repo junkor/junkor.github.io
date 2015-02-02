@@ -62,10 +62,6 @@ nav:
     url: https://github.com/junkor
     icon: icon-github
     class: none
-  - text: weibo
-    url: http://weibo.com/junkor/home
-    icon: icon-heart
-    class: none
   - text: links
     url: /links.html
     icon: icon-link
