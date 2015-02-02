@@ -1,5 +1,10 @@
-Applicative Functors
-----
+---
+layout: post
+title: Applicative Functors
+description: 这一节是关于Applicative Functors的...
+keywords: Applicative Functors
+---
+
 >文章翻译自[objc](http://www.objc.io)，原文连接：『[Applicative Functors](http://www.objc.io/snippets/7.html)』
 
 在之前的[『Currying』](http://junkor.github.io/2015/01/Currying/)我们有这样一个用于登录验证的例子：

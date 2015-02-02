@@ -1,5 +1,10 @@
-Phantom Types
-----
+---
+layout: post
+title: Phantom Types
+description: 有时，当在我们的app里处理重要的类型数据时需要额外的注意。假设你的应用核心是文件处理，并且想保证在打开并读取文件的时候，不能进行任何的写操作。第一步，我们可以对NSFileHandle进行包装，给他一个额外的参数...
+keywords: Phantom Types
+---
+
 >文章翻译自[objc](http://www.objc.io)，原文连接：『[Phantom Types](http://www.objc.io/snippets/13.html)』
 
 有时，当在我们的app里处理重要的类型数据时需要额外的注意。假设你的应用核心是文件处理，并且想保证在打开并读取文件的时候，不能进行任何的写操作。第一步，我们可以对NSFileHandle进行包装，给他一个额外的参数：

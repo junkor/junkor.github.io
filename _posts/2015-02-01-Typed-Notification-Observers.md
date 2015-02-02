@@ -1,5 +1,10 @@
-Typed Notification Observers
-----
+---
+layout: post
+title: Typed Notification Observers
+description: 这一节是建立在NSNotificationCenter之上的。我们要改善两点：第一，实现对notification center增加和移除观察的自动管理，使得添加观察的操作就像是创建一个对象；移除的操作就像是回收这个对象。第二，我们将应用前边讲到的Phantom Types来实现我们自己的通知类型...
+keywords: Typed Notification Observers
+---
+
 >文章翻译自[objc](http://www.objc.io)，原文连接：『[Typed Notification Observers](http://www.objc.io/snippets/16.html)』
 
 这一节是建立在NSNotificationCenter之上的。我们要改善两点：第一，实现对notification center增加和移除观察的自动管理，使得添加观察的操作就像是创建一个对象；移除的操作就像是回收这个对象。第二，我们将应用前边讲到的[Phantom Types](http://junkor.github.io/2015/01/Phantom-Types)来实现我们自己的通知类型。

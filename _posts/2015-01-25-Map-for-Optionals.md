@@ -1,5 +1,10 @@
-Map for Optionals
-----
+---
+layout: post
+title: Map for Optionals
+description: 在之前我们已经讲过对Array执行map操作。map 操作把一个数组转换成一个具有同样数目元素的新数组，每个元素都经过了转换函数的处理...
+keywords: Map for Optionals
+---
+
 >文章翻译自[objc](http://www.objc.io)，原文连接：『[Map for Optionals](http://www.objc.io/snippets/9.html)』
 
 在之前我们已经讲过对Array执行map操作。map 操作把一个数组转换成一个具有同样数目元素的新数组，每个元素都经过了转换函数的处理，如：

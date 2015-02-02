@@ -1,5 +1,10 @@
-Flattening and mapping arrays
-----
+---
+layout: post
+title: FlatMap Arrays(Flattening and mapping arrays)
+description: 在函数式编程中，在数组上map是个很常见的操作。一般情况下，那些需要flatten的数组map的结果是个数组。在很多函数式编程语言中，一般都会有一个操作符来实现flattening、然后mapping的操作。它map一个函数f，然后flatten结果数组到一个单一数组中...
+keywords: FlatMap,Flattening and mapping arrays
+---
+
 >文章翻译自[objc](http://www.objc.io)，原文连接：『[Flattening and mapping arrays](http://www.objc.io/snippets/4.html)』
 
 在函数式编程中，在数组上map是个很常见的操作。一般情况下，那些需要flatten的数组map的结果是个数组。在很多函数式编程语言中，一般都会有一个操作符来实现flattening、然后mapping的操作。它map一个函数f，然后flatten结果数组到一个单一数组中：
