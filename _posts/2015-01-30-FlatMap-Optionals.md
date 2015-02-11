@@ -1,7 +1,7 @@
 ---
 layout: post
 title: FlatMap Optionals
-description: 之前我们讲过给数组绑定函数（前边的[『Flattening and Mapping Array』](http://junkor.github.io/2015/01/Flattening-and-mapping-arrays/)）的知识,有时称作flatMap。我们可以对optional做同样的事情，让我们来看看下边的两个dictionary...
+description: 之前我们讲过给数组绑定函数（前边的『Flattening and Mapping Array』）的知识,有时称作flatMap。我们可以对optional做同样的事情，让我们来看看下边的两个dictionary...
 keywords: FlatMap Optionals
 ---
 
