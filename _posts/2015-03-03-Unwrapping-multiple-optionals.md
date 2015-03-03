@@ -5,7 +5,7 @@ description: Swift1.2带来了很多新的变化，这一节我们来看一下un
 keywords: Unwrapping multiple optionals
 ---
 
->文章翻译自[objc](http://www.objc.io)，原文连接：『[Caesar ciphers](http://www.objc.io/snippets/18.html)』
+>文章翻译自[objc](http://www.objc.io)，原文连接：『[Unwrapping multiple optionals](http://www.objc.io/snippets/18.html)』
 
 Swift1.2带来了很多新的变化，这一节我们来看一下unwrap多个optional值。在前边的『[Applicative Functors](http://junkor.github.io/2015/01/22/Applicative-Functors.html)』中，我们通过使用applicative functors来避免嵌套的if语句。如果你还有印象的话，我们大概是从下边的代码开始的：
 
