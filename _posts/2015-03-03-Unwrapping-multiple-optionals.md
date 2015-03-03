@@ -1,6 +1,6 @@
 ---
 layout: post
-title: unwrap多个optional值(Unwrapping multiple optionals)
+title: 拆解多个optional值(Unwrapping multiple optionals)
 description: Swift1.2带来了很多新的变化，这一节我们来看一下unwrap多个optional值。在前边的Applicative Functors中，我们通过使用applicative functors来避免嵌套的if语句。如果你还有印象的话，我们大概是从下边的代码开始的...
 keywords: Unwrapping multiple optionals
 ---
