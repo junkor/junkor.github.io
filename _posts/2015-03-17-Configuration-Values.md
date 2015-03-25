@@ -1,11 +1,11 @@
 ---
 layout: post
 title: 配置参数(Configuration Values)
-description: 有些时候对top-level的函数进行轻量的封装是很nice的，或者完成像在《Functional Programming in Swift》中描述的那样进行完全封装。这一节，我们来给NSScanner做一个拓展...
+description: 当你处理一个配置对象时，一般都会处理多个配置属性。例如，当要配置一个TableView的时候，可以用一个配置对象来保存多个显示参数。假设我们的应用中有两类TableView：很普通的plain样式的（没有header、背景、footer）和高度定制的（有header和footer）.第一步我们需要声明一个结构来存储我们的自定义选项...
 keywords: 配置参数,Configuration Values
 ---
 
->文章翻译自[objc](http://www.objc.io)，原文连接：『[Replacing a complicated API with optionals](http://www.objc.io/snippets/20.html)』
+>文章翻译自[objc](http://www.objc.io)，原文连接：『[Configuration Values](http://www.objc.io/snippets/20.html)』
 
 当你处理一个配置对象时，一般都会处理多个配置属性。例如，当要配置一个TableView的时候，可以用一个配置对象来保存多个显示参数。假设我们的应用中有两类TableView：很普通的plain样式的（没有header、背景、footer）和高度定制的（有header和footer）.第一步我们需要声明一个结构来存储我们的自定义选项：
 
