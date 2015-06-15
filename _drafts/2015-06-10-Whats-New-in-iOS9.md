@@ -20,10 +20,10 @@
 * [SceneKit的新功能]()
 * [SpriteKit的新功能]()
 
-[AppThinning]()  
-[支持Right-to-Left语言]()  
-[App传输安全]()  
-[拓展点]()  
+[AppThinning](#AppThinning)  
+[支持Right-to-Left语言](#RightToLeft)  
+[App传输安全(ATS)](#ATS)  
+[其他拓展](#ExtensionPoints)  
 [Contacts和Contacts UI]()  
 [Watch Connectivity]()  
 [Swift增强]()  
@@ -187,8 +187,6 @@ GameplayKit.framework提供了游戏开发的基础支持。使用GameplayKit来
 
 
 ###<span id="AppThinning"> AppThinning </span>
-App thinning
-
 App thinning包含以下几点：
 
 * Slicing。根据设备只下载当前设备需要的资源。(比如iphone6，只下载@3x的图片资源)
@@ -196,6 +194,38 @@ App thinning包含以下几点：
 * Bitcode。归档你的app并提交编译的中间文件到App Store，apple会将中间文件编译成指定的64位或者32位的可执行文件供相应的设备下载。
 
 更多关于app thinning的信息，移步[App Thinning (iOS, watchOS)](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AppThinning/AppThinning.html#//apple_ref/doc/uid/TP40012582-CH35)
+
+####<span id="RightToLeft">支持Right-to-Left Languages</span>
+iOS9中对Right-to-Left Languages做了广泛支持，使得实现翻转类的交互更加简单。例如：
+
+* 标准的 UIKit 控件在right-to-left的context中可以自动翻转。
+* UIView 定义了 content attributes 的语法使得你可以指定特定的View出现在right-to-left的context中。
+* UIImage提供了imageFlippedForRightToLeftLayoutDirection方法，使得用程序的方式翻转图片变得更加简单。
+了解更多flip方式的交互，移步[Supporting Right-to-Left Languages]()
+
+####<span id="ATS">App Transport Security</span>
+ATS允许一个app在Info.plist中声明一个指定的域名，来标示与其进行安全通讯。ATS为了防止信息泄露，提供了简单易用的默认的安全处理。你需要尽快采用ATS，不管你是创建新的app或者是已经现存的一个app。
+
+如果你是新开发一个app，你需要使用HTTPS。如果是现存的app，你最好立刻切换成https的方式，并尽快制定一个迁移方案。
+
+####<span id="ExtensionPoints">Extension Points</span>
+iOS9中引入了一些新的Extension Points(一个Extension Point的意思就是为指定的功能点定义一些策略或者提供一些api，以便你开发相应的插件)
+
+* 网络的extension points:
+	* 使用Packet Tunnel Provider来实现自定义的VPN数据封装协议
+	* 使用App Proxy Provider实现一个客户端的自定义的透明的网络代理协议
+	* 使用Filter Data Provider和Filter Control Provider实现一个动态的、设备端的网络过滤器。  
+
+	>每一个网络的extension points都需要Apple特定的许可。
+
+* Safari extension points:
+	* 使用Shared Links可以在Safari的分享列表中展现你的内容
+	* 使用Content Blocking
+	* 
+
+
+
+
 
 
 
