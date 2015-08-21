@@ -24,22 +24,23 @@
 [支持Right-to-Left语言](#RightToLeft)  
 [App传输安全(ATS)](#ATS)  
 [其他拓展](#ExtensionPoints)  
-[Contacts和Contacts UI]()  
-[Watch Connectivity]()  
-[Swift增强]()  
-[其他的Framework变更]()  
+[Contacts和Contacts UI](#Contacts)  
+[Watch Connectivity](#WatchConnectivity)  
+[Swift增强](#Swift)
 
-* [AV Foundation Framework]()
-* [AVKit Framework]()
-* [CloudKit]()
-* [Foundation Framework]()
-* [HealthKit Framework]()
-* [MapKit Framework]()
-* [PassKit Framework]()
-* [Safari Services Framework]()
-* [UIKit Framework]()
+[其他的Framework变更](#AdditionalChanges)  
 
-[弃用APIs]()
+* [AV Foundation Framework](#AVFoundation)
+* [AVKit Framework](#AVKit)
+* [CloudKit](#CloudKit)
+* [Foundation Framework](#Foundation)
+* [HealthKit Framework](#HealthKit)
+* [MapKit Framework](#MapKit)
+* [PassKit Framework](#PassKit)
+* [Safari Services Framework](#SafariServices)
+* [UIKit Framework](#UIKit)
+
+[弃用APIs](#DeprecatedAPIs)
 
 ###<span id="iOS9">iOS9.0</span>
 这篇文章主要介绍了iOS9里跟开发相关一些主要功能，同时也列出了一些新功能的细节。
@@ -220,8 +221,67 @@ iOS9中引入了一些新的Extension Points(一个Extension Point的意思就�
 
 * Safari extension points:
 	* 使用Shared Links可以在Safari的分享列表中展现你的内容
-	* 使用Content Blocking
-	* 
+	* 使用Content Blocking，通过给Safari提供一个描述屏蔽内容的列表就可以在用户浏览web内容时屏蔽指定的内容。
+
+* Spotlight extension points:
+	* 使用app indexing extension point 来索引你应用内的数据
+	* 使用Index Maintenance extension point使得在不加载应用的情况下re-indexing  
+* Audio Unit extension point 允许你的应用拥有像GarageBand、Logic等的乐器、音效、声音合成功能。这个extension point不仅给iOS带来了插件式的音频处理体验并且允许你在App Store中售卖。
+
+想了解更多关于App extension的信息，移步[App Extension Programming Guide]().
+
+####<span id="Contacts">Contacts and Contacts UI</span>
+iOS9引入了Contacts和Contacts UI框架(Contacts.framework和 ContactsUI.framework)，提供了Address Book和Address Book UI的oop替代方案。了解更多可以到[Contacts Framework Reference]()或者[ContactsUI Framework Reference]()
+
+####<span id="WatchConnectivity">Watch Connectivity</span>
+Watch Connectivity框架(WatchConnectivity.framework)提供了两种iPhone与已配对Apple Watch的通讯方式。使用这个框架来协调你的iOS app与Watch app直接的互动。框架为两个应用提供了针对运行时（不是runtime而是两个app both running的时候）的及时消息(immediate messaging)和非运行时的后台消息(background messaging)。了解更多，请移步[Watch Connectivity Framework Reference]()
+
+
+####<span id="Swift">Swift Enhancements</span>
+想了解关于Swift的更新？看看这个[Swift Language]()
+
+###<span id="AdditionalChanges">Additional Framework Changes</span>
+除了上述的一些主要变更外，iOS9还做了很多其他方面的改进。
+
+####<span id="AVFoundation">AV Foundation Framework</span>
+AVFoundation.framework包含了一个新的class —— AVSpeechSynthesis，允许你使用Alex等的voice。
+
+####<span id="AVKit">AVKit Framework</span>
+AVKit.framework引入了AVPictureInPictureController和AVPlayerViewController来帮助支持画中画(pip).更多关于 Picture in Picture的信息，看这里[Multitasking Enhancements for iPad](#Multitasking)。
+
+####<span id="CloudKit">CloudKit</span>
+如果你在应用中使用了CloudKit，你可以使用CloudKit web services或者CloudKit JS(一个js库)提供的web接口来为用户提供访问数据。你需要创建相应的schema以实现现有数据库操作增、删、改、查、订阅等web接口的功能。更多内容请查阅[CloudKit JS Reference](),[CloudKit Web Services Reference]()还有[CloudKit Catalog: An Introduction to CloudKit]()。
+
+####<span id="Foundation">Foundation Framework</span>
+Foundation.framework包含了以下增强：
+* NSBundle资源的按需加载(on-demand loading)APIs
+* Strings文件支持context-dependent variable width strings
+* NSProcessInfo提供了对电量和热量的管理APIs
+
+####<span id="HealthKit">HealthKit Framework</span>
+HealthKit.framework主要有以下改进：
+* 支持胜利健康和紫外线等领域的健康跟踪。更详细的内容，可以参考[HealthKit Constants Reference]()
+* 支持删除信息的查询和追踪(New support for bulk-deleting entries and tracking deleted entries),更多信息可以参考[HKHealthStore Class Reference]()中的HKDeletedObject，HKAnchoredObjectQuery，deleteObjects:withCompletion:还有deleteObjectsOfType:predicate:withCompletion:。
+
+####<span id="MapKit">MapKit Framework</span>
+MapKit.framework引入了一些新的特性来提升用户体验。特别是：
+
+*  MapKit支持交通路线搜索和路线导航(and launching Maps into transit directions)
+*  Map views支持3D立交桥模式
+*  注释支持完全自定义
+*  MapKit和CLGeocoder的搜索结果支持时区
+
+####<span id="PassKit">PassKit Framework</span>
+PassKit.framework主要增加了一些Apple Pay的支持，例如：
+* iOS9中Apple pay支持Discover cards、store debit 和信用卡。更多信息
+####<span id="SafariServices">Safari Services Framework</span>
+####<span id="UIKit">UIKit Framework</span>
+
+
+###<span id="DeprecatedAPIs">Deprecated APIs</span>
+
+
+
 
 
 
