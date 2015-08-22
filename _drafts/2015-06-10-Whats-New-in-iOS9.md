@@ -13,12 +13,12 @@
 [游戏](#Gaming)
 
 * [GameplayKit](#GameplayKit)
-* [Model IO]()
-* [MetaKit]()
-* [MetalPerformanceShaders]()
-* [Metal的新功能]()
-* [SceneKit的新功能]()
-* [SpriteKit的新功能]()
+* [Model IO](#ModelIO)
+* [MetaKit](#MetalKit)
+* [MetalPerformanceShaders](#MetalPerformanceShaders)
+* [Metal的新功能](#NewFeaturesinMetal)
+* [SceneKit的新功能](#NewFeaturesinSceneKit)
+* [SpriteKit的新功能](#NewFeaturesinSpriteKit)
 
 [AppThinning](#AppThinning)  
 [支持Right-to-Left语言](#RightToLeft)  
@@ -186,6 +186,53 @@ iOS9中包含了多项有关游戏绘制和音频播放的技术提升。你可�
 ####<span id="GameplayKit">GameplayKit</span>
 GameplayKit.framework提供了游戏开发的基础支持。使用GameplayKit来开发游戏机制，并结合高级图形引擎(例如SceneKit或SpriteKit)可以创建一个完整的游戏上。这个framework提供了
 
+####<span id="ModelIO">Model IO</span>
+
+####<span id="MetalKit">MetalKit</span>
+MetalKit.framework提供了很多使用的类和函数来降低创建一个Metal应用的成本。MetalKit对开发主要提供了3方面的支持：
+
+* Texture loading帮助你的应用轻松且移步的从不同格式的资源中加载纹理。常见的格式有PNG、JPEG，还支持纹理的特有格式如KTX和PVR。
+* Model handling提供了Metal特用的功能，使得Metal和Model IO之间的接口更简单。使用这些类和函数在Model IO的meshes和Metal的buffers之间高效的传输数据。
+* View management
+
+了解更多MetalKit APIs，这里[MetalKit Framework Reference]().Metal相关的，[Metal Programming Guide ]()、[Metal Framework Reference]()还有[Metal Shading Language Guide]()。
+
+####<span id="MetalPerformanceShaders">MetalPerformanceShaders</span>
+MetalPerformanceShaders.framework提供了高度优化的计算和图形着色器，可以轻松高效地集成到你的Metal应用中。这些data-parallel着色器将充分发挥那些支持Metal的iOS设备CPU的硬件特性。
+
+使用MetalPerformanceShader类可以在支持的硬件上，在不改变你原有着色器代码的情况下提升性能。MetalPerformanceShader对象。MetalPerformanceShader objects可以无缝地融入你的Metal应用中配合Metal resource objects如buffers、或者textures使用。
+
+MetalPerformanceShaders.framework支持的常用着色器有：
+
+* Gaussian blur - 由MPSImageGaussianBlur类实现
+* Image histogram - 由MPSImageHistogram类实现
+* Sobel edge detection - 由MPSImageSobel类实现
+
+####<span id="NewFeaturesinMetal">New Features in Metal</span>
+Metal.framework添加了一些使你的应用图像渲染性能更多、效果更好地新特性。例如：
+
+* Metal Shading Language和Metal标准库的改进
+* 着色计算现在支持更大范围的像素格式
+* OSX中添加私有的深度模板文理对齐(The addition of private and depth stencil textures to align with OS X)
+* 为了改善阴影效果新增的depth clamping和前后分离的模板引用值(stencil reference values)
+
+####<span id="NewFeaturesinSceneKit">New Features in SceneKit</span>
+SceneKit.framework在iOS9中包含的新特性有：
+
+* 支持Metal渲染。SCNView和SCNSceneRenderer类可以在支持Metal的设备上执行高性能的Metal渲染。创建游戏或者交互式的3D应用时，使用场景编辑器可以减少一些编码成本和时间成本（这里有个相关的事例工程，这里下载[Building a SceneKit Game with the Xcode Scene Editor]()）。
+* 音频定位(Positional audio)。SCNAudioPlayer和SCNNode类中添加了音频占位效果，可以自动追踪场景中的人物坐标。(这个翻译的有点儿屎)
+
+了解这方面的更多详情或者其他特性，移步[SceneKit Framework Reference]()
+
+####<span id="NewFeaturesinSpriteKit">New Features in SpriteKit</span>
+SpriteKit.framework在iOS9中包含的新特性有：
+
+* 支持Metal渲染。在支持Metal的设备上，metal渲染是自动启用的，除非你用的是自定义的OpenGL ES着色器。
+* Xcode集成了新的场景编辑器和Action Editor。创建游戏或者交互式的2D应用时，使用场景编辑器可以减少一些编码成本和时间成本（这里有个相关的事例工程，这里下载[Building a Cross Platform Game with SpriteKit and GameplayKit]()）。
+* Camera nodes(SKCameraNode类实例)使得scrolling类型的游戏实现更简单。只用拖拽一个camera node到你的场景中，然后配置到场景的camera属性中就ok了。
+* Positional audio。想要了解更多关于在场景中追踪玩家坐标自动配置音效的内容，看看[SKAudioNode Class Reference]()。
+
+了解这方面的更多详情或者其他特性，移步[SpriteKit Framework Reference]()
 
 ###<span id="AppThinning"> AppThinning </span>
 App thinning包含以下几点：
@@ -273,14 +320,35 @@ MapKit.framework引入了一些新的特性来提升用户体验。特别是：
 
 ####<span id="PassKit">PassKit Framework</span>
 PassKit.framework主要增加了一些Apple Pay的支持，例如：
-* iOS9中Apple pay支持Discover cards、store debit 和信用卡。更多信息
-####<span id="SafariServices">Safari Services Framework</span>
-####<span id="UIKit">UIKit Framework</span>
 
+* iOS9中Apple pay支持Discover cards、store debit 和信用卡。更多信息
+* 发卡机构和支付系统可以在他们的应用中直接向apple pay中添加卡。有关更多信息,请参见[PKAddPaymentPassViewController]()。
+* 新的API避免了ApplePay的自动展示，只有当应用在前台且靠近NFC或者RF reader的时候才会自动触发。更多信息可以参考[requestAutomaticPassPresentationSuppressionWithResponseHandler:]()。
+
+####<span id="SafariServices">Safari Services Framework</span>
+SafariServices.framework包含了以下改进： 
+SFSafariViewController 可以用来在你的应用内展示web内容，并且可以共享Safari的cookie和其他网站信息，同时也支持很多Safari的其他主要功能：自动填充、Reader等。SFSafariViewController并不像Safari那样，它只展示一页，和一个“完成”按钮，以 便用户可以回到原来应用的场景中。 
+如果你应用中展示的web内容没有太多自定义的需求，可以考虑把原来的WKWebView或者基于UIWebView的内置浏览器替换为SFSafariViewController。
+
+####<span id="UIKit">UIKit Framework</span>
+UIKit.framework包含了很多新的提升，例如：
+
+* UIStackView可以帮助你管理一些横向或者纵向的子view。
+* 为了使布局更简单，为UIView(例如leadingAnchor和widthAnchor)、NSLayoutAnchor和NSLayoutDimension提供了新的anchors。
+* 新的布局引导在你采用readable content时，提供合适的边距和定义一个view中内容的绘制区域，详情请见[UILayoutGuide]()
+* UIApplicationDelegate中提供了一个新的函数用来打开(或者编辑)一个文档而不是处理一个文档的副本。应用想要支持open-in-place功能，还需要在Info.plist中配置LSSupportsOpeningDocumentsInPlace的值为yes或者true。
+* UITextInputAssistantItem类用来来布局shortcuts bar中的bar buttons。
+* touch events有部分改进，比如你可以获取到最后一次刷新显示和触摸预测之间的toch值。
+* UIKit dynamics的升级有，支持不规则边界的碰撞检测、新的UIFieldBehavior类支持自定义多种field types，而UIAttachmentBehavior则支持附加的attachment types。
+* UIUserNotificationAction增加的behavior属性，允许你在用户输入时得到通知。
+* 新的NSDataAsset类使得从内存或者绘图中获取资源更加轻松
+* 所有标准UIKit组件都适的当支持从右到左的语言。此外,导航,手势,collection views和 table cell布局也有相应的支持。
 
 ###<span id="DeprecatedAPIs">Deprecated APIs</span>
+下列APIs是被弃用的：
 
-
+* AddressBook和AddressBookUI，可以使用Contacts和Contacts UI替代。
+想获取完整的弃用API列表，可以在这里找到[iOS 9.0 API Diffs]()。 
 
 
 
