@@ -8,7 +8,7 @@
 * [使用NSUserActivity APIs使应用状态和活动可搜索](#NSUserActivity)  
 * [使用Core Spotlight APIs让应用内容可搜索](#CoreSpotlight)  
 * [使用Web Markup使应用内容可搜索](#WebMarkup)
-* [使用Universal Links使得你的应用可以处理你的网站链接]()
+* [使用Universal Links使得你的应用可以处理你的网站链接](#UniversalLinks)
 
 [游戏](#Gaming)
 
@@ -147,7 +147,7 @@ iOS9中还包含了一个Core Spotlight的拓展，它允许系统在你的app�
 
 除了使用[Schema.org](http://schema.org)的标准，你还可以支持Open Graph标记来提供一张具体的图片，或者使用标题和描述的方式来组织内容。
 
-###<span id="WebMarkup">使用Universal Links使得你的应用可以处理你的网站链接</span>
+###<span id="UniversalLinks">使用Universal Links使得你的应用可以处理你的网站链接</span>
 在iOS9里，你的app可以直接注册并打开一个web链接(http或者https),而不是通过Safari打开。这种web和app之间的关联方式可以帮助Apple在搜索列表中呈现你的app的内容。
 
 支持universal links是建立于在浏览器和app之间使用Handoff的类似机制之上的，并且可以共享web证书(关于技术的细节可移步至[ Web Browser–to–Native App Handoff](https://developer.apple.com/library/prerelease/ios/documentation/UserExperience/Conceptual/Handoff/AdoptingHandoff/AdoptingHandoff.html#//apple_ref/doc/uid/TP40014338-CH2-SW10)和[Shared Web Credentials Reference](https://developer.apple.com/library/prerelease/ios/documentation/Security/Reference/SharedWebCredentialsRef/index.html#//apple_ref/doc/uid/TP40014989))。一个信任的链接关系是通过在一个存在app中添加一个叫做com.apple.developer.associated-domains的entitlement和在网站端添加一个叫做apple-app-site-association的文件来建立的。
@@ -184,16 +184,36 @@ iOS9中还包含了一个Core Spotlight的拓展，它允许系统在你的app�
 iOS9中包含了多项有关游戏绘制和音频播放的技术提升。你可以使用高层api轻松开发，也可以使用底层api来充分发挥GPU的力量。
 
 ####<span id="GameplayKit">GameplayKit</span>
-GameplayKit.framework提供了游戏开发的基础支持。使用GameplayKit来开发游戏机制，并结合高级图形引擎(例如SceneKit或SpriteKit)可以创建一个完整的游戏上。这个framework提供了
+GameplayKit.framework提供了游戏开发的基础支持。使用GameplayKit来开发游戏机制，并结合高级图形引擎(例如SceneKit或SpriteKit)可以创建一个完整的游戏上。这个framework为创建游戏提供了很多模型化的架构，包括：
+
+* 在不影响调试的情况下给游戏引入不可预知性的Randomization tools
+* Entity-component式的架构设计，提升gameplay代码的复用性
+* 降低gameplay系统状态机维护的复杂性
+
+GameplayKit也包含了对通用gameplay算法的标准实现，所以你不必花费太多精力去阅读白皮书，而是把更多的时间用在创建独一无二的游戏上。GameplayKit主要实现了下列几种标准算法：
+
+* 敌对的回合制游戏minmax人工智能。
+* 用来描述行为的高级自动追踪目标的模拟代理。
+* 构建数据驱动的游戏规则系统：logic、fuzzy reasoning和emergent behavior。
+
+了解更多GameplayKit地信息，可以查阅[GameplayKit Programming Guide]()和[GameplayKit Framework Reference]()。具体的，可以从看一些demo工程开始：FourInARow(使用GameplayKit Minmax Strategist实现的Opponent AI)、AgentsCatalog(使用了GameplayKit的Agents System)还有DemoBots(使用SpriteKit和GameplayKit创建跨平台的游戏)。
 
 ####<span id="ModelIO">Model IO</span>
+ModelIO.framework提供对3D资源和相关素材的系统级别的理解。使用这个框架你可以：
+
+* 引入mesh数据、资源描述、光线和camera的配置，或者从其他当下主流的绘制软件或者游戏引擎支持的格式文件中引入场景信息。
+* 访问或生成下列数据——如：bake光照信息到mesh中，或者创建程序式的sky textures。
+* 与MetalKit、GLKit和SceneKit配合，完成向GPU缓存高效的加载资源数据进行渲染。
+* 导出正在访问的或者生成的资源数据到多个或者多种格式的文件中。
+
+了解更多关于Model IO的细节，看看[Model I/O Framework Reference]()。
 
 ####<span id="MetalKit">MetalKit</span>
 MetalKit.framework提供了很多使用的类和函数来降低创建一个Metal应用的成本。MetalKit对开发主要提供了3方面的支持：
 
 * Texture loading帮助你的应用轻松且移步的从不同格式的资源中加载纹理。常见的格式有PNG、JPEG，还支持纹理的特有格式如KTX和PVR。
 * Model handling提供了Metal特用的功能，使得Metal和Model IO之间的接口更简单。使用这些类和函数在Model IO的meshes和Metal的buffers之间高效的传输数据。
-* View management
+* View management对Metal view的标准实现，这样彻底降低了创建一个图形渲染app的代码成本。
 
 了解更多MetalKit APIs，这里[MetalKit Framework Reference]().Metal相关的，[Metal Programming Guide ]()、[Metal Framework Reference]()还有[Metal Shading Language Guide]()。
 
