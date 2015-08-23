@@ -23,7 +23,7 @@
 [AppThinning](#AppThinning)  
 [支持Right-to-Left语言](#RightToLeft)  
 [App传输安全(ATS)](#ATS)  
-[其他拓展](#ExtensionPoints)  
+[插件拓展(Extension Points)](#ExtensionPoints)  
 [Contacts和Contacts UI](#Contacts)  
 [Watch Connectivity](#WatchConnectivity)  
 [Swift增强](#Swift)
@@ -35,6 +35,7 @@
 * [CloudKit](#CloudKit)
 * [Foundation Framework](#Foundation)
 * [HealthKit Framework](#HealthKit)
+* [Local Authentication Framework](#LocalAuthenticationFramework)
 * [MapKit Framework](#MapKit)
 * [PassKit Framework](#PassKit)
 * [Safari Services Framework](#SafariServices)
@@ -80,7 +81,7 @@ iOS9中的搜索功能为用户提供了多种访问应用内信息的途径。�
 2. 当用户点击一条结果时，直接跳转到你应用里的相应区域。尽可能的不要有中间环节打断用户的操作，那样会阻止用户获取他们真正想要的内容。
 
 ###<span id="NSUserActivity">使用NSUserActivity使应用内容可搜索</span>
-目前为止，你或许在使用NSUserActivity api来支持Handoff(更多关于handoff的功能可以参阅[Handoff Programming Guide ](https://developer.apple.com/library/prerelease/ios/documentation/UserExperience/Conceptual/Handoff/HandoffFundamentals/HandoffFundamentals.html#//apple_ref/doc/uid/TP40014338))。在iOS9中，NSUserActivity添加了一些新的api允许你指定一些程序特定的活动或者状态是可搜索的,当这些内容被出现在用户的搜索结果或者Safari结果中时，用户可以点击相应的结果跳转到你的app中来。
+目前为止，你或许在使用NSUserActivity api来支持Handoff(更多关于handoff的功能可以参阅[Handoff Programming Guide](https://developer.apple.com/library/prerelease/ios/documentation/UserExperience/Conceptual/Handoff/HandoffFundamentals/HandoffFundamentals.html#//apple_ref/doc/uid/TP40014338))。在iOS9中，NSUserActivity添加了一些新的api允许你指定一些程序特定的活动或者状态是可搜索的,当这些内容被出现在用户的搜索结果或者Safari结果中时，用户可以点击相应的结果跳转到你的app中来。
 
 NSUserActivity也提供了一些属性以便你在搜索结果中展示丰富的内容，例如你可以指定搜索结果的标题、描述或者缩略图。
 
@@ -196,7 +197,7 @@ GameplayKit也包含了对通用gameplay算法的标准实现，所以你不必�
 * 用来描述行为的高级自动追踪目标的模拟代理。
 * 构建数据驱动的游戏规则系统：logic、fuzzy reasoning和emergent behavior。
 
-了解更多GameplayKit地信息，可以查阅[GameplayKit Programming Guide]()和[GameplayKit Framework Reference]()。具体的，可以从看一些demo工程开始：FourInARow(使用GameplayKit Minmax Strategist实现的Opponent AI)、AgentsCatalog(使用了GameplayKit的Agents System)还有DemoBots(使用SpriteKit和GameplayKit创建跨平台的游戏)。
+了解更多GameplayKit地信息，可以查阅[GameplayKit Programming Guide](https://developer.apple.com/library/prerelease/ios/documentation/General/Conceptual/GameplayKit_Guide/index.html#//apple_ref/doc/uid/TP40015172)和[GameplayKit Framework Reference](https://developer.apple.com/library/prerelease/ios/documentation/GameplayKit/Reference/GameplayKit_Framework/index.html#//apple_ref/doc/uid/TP40015199)。具体的，可以从看一些demo工程开始：FourInARow(使用GameplayKit Minmax Strategist实现的Opponent AI)、AgentsCatalog(使用了GameplayKit的Agents System)还有DemoBots(使用SpriteKit和GameplayKit创建跨平台的游戏)。
 
 ####<span id="ModelIO">Model IO</span>
 ModelIO.framework提供对3D资源和相关素材的系统级别的理解。使用这个框架你可以：
@@ -206,7 +207,7 @@ ModelIO.framework提供对3D资源和相关素材的系统级别的理解。使�
 * 与MetalKit、GLKit和SceneKit配合，完成向GPU缓存高效的加载资源数据进行渲染。
 * 导出正在访问的或者生成的资源数据到多个或者多种格式的文件中。
 
-了解更多关于Model IO的细节，看看[Model I/O Framework Reference]()。
+了解更多关于Model IO的细节，看看[Model I/O Framework Reference](https://developer.apple.com/library/prerelease/ios/documentation/ModelIO/Reference/ModelIO_Framework/index.html#//apple_ref/doc/uid/TP40015421)。
 
 ####<span id="MetalKit">MetalKit</span>
 MetalKit.framework提供了很多使用的类和函数来降低创建一个Metal应用的成本。MetalKit对开发主要提供了3方面的支持：
@@ -215,7 +216,7 @@ MetalKit.framework提供了很多使用的类和函数来降低创建一个Metal
 * Model handling提供了Metal特用的功能，使得Metal和Model IO之间的接口更简单。使用这些类和函数在Model IO的meshes和Metal的buffers之间高效的传输数据。
 * View management对Metal view的标准实现，这样彻底降低了创建一个图形渲染app的代码成本。
 
-了解更多MetalKit APIs，这里[MetalKit Framework Reference]().Metal相关的，[Metal Programming Guide ]()、[Metal Framework Reference]()还有[Metal Shading Language Guide]()。
+了解更多MetalKit APIs，这里[MetalKit Framework Reference](https://developer.apple.com/library/prerelease/ios/documentation/MetalKit/Reference/MTKFrameworkReference/index.html#//apple_ref/doc/uid/TP40015356).Metal相关的，[Metal Programming Guide](https://developer.apple.com/library/prerelease/ios/documentation/Miscellaneous/Conceptual/MetalProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40014221)、[Metal Framework Reference](https://developer.apple.com/library/prerelease/ios/documentation/Metal/Reference/MetalFrameworkReference/index.html#//apple_ref/doc/uid/TP40014161)还有[Metal Shading Language Guide](https://developer.apple.com/library/prerelease/ios/documentation/Metal/Reference/MetalShadingLanguageGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40014364)。
 
 ####<span id="MetalPerformanceShaders">MetalPerformanceShaders</span>
 MetalPerformanceShaders.framework提供了高度优化的计算和图形着色器，可以轻松高效地集成到你的Metal应用中。这些data-parallel着色器将充分发挥那些支持Metal的iOS设备CPU的硬件特性。
@@ -239,20 +240,20 @@ Metal.framework添加了一些使你的应用图像渲染性能更多、效果�
 ####<span id="NewFeaturesinSceneKit">New Features in SceneKit</span>
 SceneKit.framework在iOS9中包含的新特性有：
 
-* 支持Metal渲染。SCNView和SCNSceneRenderer类可以在支持Metal的设备上执行高性能的Metal渲染。创建游戏或者交互式的3D应用时，使用场景编辑器可以减少一些编码成本和时间成本（这里有个相关的事例工程，这里下载[Building a SceneKit Game with the Xcode Scene Editor]()）。
-* 音频定位(Positional audio)。SCNAudioPlayer和SCNNode类中添加了音频占位效果，可以自动追踪场景中的人物坐标。(这个翻译的有点儿屎)
+* 支持Metal渲染。[SCNView](https://developer.apple.com/library/prerelease/ios/documentation/SceneKit/Reference/SCNView_Class/index.html#//apple_ref/occ/cl/SCNView)和[SCNSceneRenderer](https://developer.apple.com/library/prerelease/ios/documentation/SceneKit/Reference/SCNSceneRenderer_Protocol/index.html#//apple_ref/occ/intf/SCNSceneRenderer)类可以在支持Metal的设备上执行高性能的Metal渲染。创建游戏或者交互式的3D应用时，使用场景编辑器可以减少一些编码成本和时间成本（这里有个相关的事例工程，这里下载[Building a SceneKit Game with the Xcode Scene Editor](https://developer.apple.com/library/prerelease/ios/samplecode/Fox/Introduction/Intro.html#//apple_ref/doc/uid/TP40016154)）。
+* 音频定位(Positional audio)。[SCNAudioPlayer](https://developer.apple.com/library/prerelease/ios/documentation/SceneKit/Reference/SCNAudioPlayer_Class/index.html#//apple_ref/occ/cl/SCNAudioPlayer)和[SCNNode](https://developer.apple.com/library/prerelease/ios/documentation/SceneKit/Reference/SCNNode_Class/index.html#//apple_ref/occ/cl/SCNNode)类中添加了音频占位效果，可以自动追踪场景中的人物坐标。(这个翻译的有点儿屎)
 
-了解这方面的更多详情或者其他特性，移步[SceneKit Framework Reference]()
+了解这方面的更多详情或者其他特性，移步[SceneKit Framework Reference](https://developer.apple.com/library/prerelease/ios/documentation/SceneKit/Reference/SceneKit_Framework/index.html)
 
 ####<span id="NewFeaturesinSpriteKit">New Features in SpriteKit</span>
 SpriteKit.framework在iOS9中包含的新特性有：
 
 * 支持Metal渲染。在支持Metal的设备上，metal渲染是自动启用的，除非你用的是自定义的OpenGL ES着色器。
-* Xcode集成了新的场景编辑器和Action Editor。创建游戏或者交互式的2D应用时，使用场景编辑器可以减少一些编码成本和时间成本（这里有个相关的事例工程，这里下载[Building a Cross Platform Game with SpriteKit and GameplayKit]()）。
-* Camera nodes(SKCameraNode类实例)使得scrolling类型的游戏实现更简单。只用拖拽一个camera node到你的场景中，然后配置到场景的camera属性中就ok了。
-* Positional audio。想要了解更多关于在场景中追踪玩家坐标自动配置音效的内容，看看[SKAudioNode Class Reference]()。
+* Xcode集成了新的场景编辑器和Action Editor。创建游戏或者交互式的2D应用时，使用场景编辑器可以减少一些编码成本和时间成本（这里有个相关的事例工程，这里下载[Building a Cross Platform Game with SpriteKit and GameplayKit](https://developer.apple.com/library/prerelease/ios/samplecode/DemoBots/Introduction/Intro.html#//apple_ref/doc/uid/TP40015179)）。
+* Camera nodes([SKCameraNode](https://developer.apple.com/library/prerelease/ios/documentation/SpriteKit/Reference/SKCameraNode/index.html#//apple_ref/occ/cl/SKCameraNode)类实例)使得scrolling类型的游戏实现更简单。只用拖拽一个camera node到你的场景中，然后配置到场景的camera属性中就ok了。
+* Positional audio。想要了解更多关于在场景中追踪玩家坐标自动配置音效的内容，看看[SKAudioNode Class Reference](https://developer.apple.com/library/prerelease/ios/documentation/SpriteKit/Reference/SKAudioNode/index.html#//apple_ref/doc/uid/TP40015249)。
 
-了解这方面的更多详情或者其他特性，移步[SpriteKit Framework Reference]()
+了解这方面的更多详情或者其他特性，移步[SpriteKit Framework Reference](https://developer.apple.com/library/prerelease/ios/documentation/SpriteKit/Reference/SpriteKitFramework_Ref/index.html#//apple_ref/doc/uid/TP40013041)
 
 ###<span id="AppThinning"> AppThinning </span>
 App thinning包含以下几点：
@@ -266,10 +267,11 @@ App thinning包含以下几点：
 ####<span id="RightToLeft">支持Right-to-Left Languages</span>
 iOS9中对Right-to-Left Languages做了广泛支持，使得实现翻转类的交互更加简单。例如：
 
-* 标准的 UIKit 控件在right-to-left的context中可以自动翻转。
-* UIView 定义了 content attributes 的语法使得你可以指定特定的View出现在right-to-left的context中。
-* UIImage提供了imageFlippedForRightToLeftLayoutDirection方法，使得用程序的方式翻转图片变得更加简单。
-了解更多flip方式的交互，移步[Supporting Right-to-Left Languages]()
+* 标准的UIKit控件在right-to-left的context中可以自动翻转。
+* [UIView](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIView_Class/index.html#//apple_ref/occ/cl/UIView)定义了content attributes的语法使得你可以指定特定的View出现在right-to-left的context中。
+* [UIImage](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIImage_Class/index.html#//apple_ref/occ/cl/UIImage)提供了image[FlippedForRightToLeftLayoutDirection](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIImage_Class/index.html#//apple_ref/occ/instm/UIImage/imageFlippedForRightToLeftLayoutDirection)方法，使得用程序的方式翻转图片变得更加简单。
+
+了解更多flip方式的交互，移步[Supporting Right-to-Left Languages](https://developer.apple.com/library/prerelease/ios/documentation/MacOSX/Conceptual/BPInternational/SupportingRight-To-LeftLanguages/SupportingRight-To-LeftLanguages.html#//apple_ref/doc/uid/10000171i-CH17)
 
 ####<span id="ATS">App Transport Security</span>
 ATS允许一个app在Info.plist中声明一个指定的域名，来标示与其进行安全通讯。ATS为了防止信息泄露，提供了简单易用的默认的安全处理。你需要尽快采用ATS，不管你是创建新的app或者是已经现存的一个app。
@@ -295,40 +297,48 @@ iOS9中引入了一些新的Extension Points(一个Extension Point的意思就�
 	* 使用Index Maintenance extension point使得在不加载应用的情况下re-indexing  
 * Audio Unit extension point 允许你的应用拥有像GarageBand、Logic等的乐器、音效、声音合成功能。这个extension point不仅给iOS带来了插件式的音频处理体验并且允许你在App Store中售卖。
 
-想了解更多关于App extension的信息，移步[App Extension Programming Guide]().
+想了解更多关于App extension的信息，移步[App Extension Programming Guide](https://developer.apple.com/library/prerelease/ios/documentation/General/Conceptual/ExtensibilityPG/index.html#//apple_ref/doc/uid/TP40014214).
 
 ####<span id="Contacts">Contacts and Contacts UI</span>
-iOS9引入了Contacts和Contacts UI框架(Contacts.framework和 ContactsUI.framework)，提供了Address Book和Address Book UI的oop替代方案。了解更多可以到[Contacts Framework Reference]()或者[ContactsUI Framework Reference]()
+iOS9引入了Contacts和Contacts UI框架(Contacts.framework和 ContactsUI.framework)，提供了Address Book和Address Book UI的oop替代方案。了解更多可以到[Contacts Framework Reference](https://developer.apple.com/library/prerelease/ios/documentation/Contacts/Reference/Contacts_Framework/index.html#//apple_ref/doc/uid/TP40015328)或者[ContactsUI Framework Reference](https://developer.apple.com/library/prerelease/ios/documentation/ContactsUI/Reference/ContactsUI_Framework/index.html#//apple_ref/doc/uid/TP40016207)
 
 ####<span id="WatchConnectivity">Watch Connectivity</span>
-Watch Connectivity框架(WatchConnectivity.framework)提供了两种iPhone与已配对Apple Watch的通讯方式。使用这个框架来协调你的iOS app与Watch app直接的互动。框架为两个应用提供了针对运行时（不是runtime而是两个app both running的时候）的及时消息(immediate messaging)和非运行时的后台消息(background messaging)。了解更多，请移步[Watch Connectivity Framework Reference]()
+Watch Connectivity框架(WatchConnectivity.framework)提供了两种iPhone与已配对Apple Watch的通讯方式。使用这个框架来协调你的iOS app与Watch app直接的互动。框架为两个应用提供了针对运行时（不是runtime而是两个app both running的时候）的及时消息(immediate messaging)和非运行时的后台消息(background messaging)。了解更多，请移步[Watch Connectivity Framework Reference](https://developer.apple.com/library/prerelease/ios/documentation/WatchConnectivity/Reference/WatchConnectivity_framework/index.html#//apple_ref/doc/uid/TP40015269)
 
 
 ####<span id="Swift">Swift Enhancements</span>
-想了解关于Swift的更新？看看这个[Swift Language]()
+想了解关于Swift的更新？看看这个[Swift Language](https://developer.apple.com/library/prerelease/ios/documentation/DeveloperTools/Conceptual/WhatsNewXcode/Articles/xcode_7_0.html#//apple_ref/doc/uid/TP40015242-SW2)
 
 ###<span id="AdditionalChanges">Additional Framework Changes</span>
 除了上述的一些主要变更外，iOS9还做了很多其他方面的改进。
 
 ####<span id="AVFoundation">AV Foundation Framework</span>
-AVFoundation.framework包含了一个新的class —— AVSpeechSynthesis，允许你使用Alex等的voice。
+AVFoundation.framework包含了一个新的class —— [AVSpeechSynthesisVoice](https://developer.apple.com/library/prerelease/ios/documentation/AVFoundation/Reference/AVSpeechSynthesisVoice_Ref/index.html#//apple_ref/occ/cl/AVSpeechSynthesisVoice)，允许你通过一个identifier指定voice，也可以使用name或者quality属性获取voice的信息。
 
 ####<span id="AVKit">AVKit Framework</span>
-AVKit.framework引入了AVPictureInPictureController和AVPlayerViewController来帮助支持画中画(pip).更多关于 Picture in Picture的信息，看这里[Multitasking Enhancements for iPad](#Multitasking)。
+AVKit.framework引入了[AVPictureInPictureController](https://developer.apple.com/library/prerelease/ios/documentation/AVKit/Reference/AVPictureInPictureController_Class/index.html#//apple_ref/occ/cl/AVPictureInPictureController)和[AVPlayerViewController](https://developer.apple.com/library/prerelease/ios/documentation/AVFoundation/Reference/AVPlayerViewController_Class/index.html#//apple_ref/occ/cl/AVPlayerViewController)来帮助支持画中画(pip).更多关于 Picture in Picture的信息，看这里[Multitasking Enhancements for iPad](#Multitasking)。
 
 ####<span id="CloudKit">CloudKit</span>
-如果你在应用中使用了CloudKit，你可以使用CloudKit web services或者CloudKit JS(一个js库)提供的web接口来为用户提供访问数据。你需要创建相应的schema以实现现有数据库操作增、删、改、查、订阅等web接口的功能。更多内容请查阅[CloudKit JS Reference](),[CloudKit Web Services Reference]()还有[CloudKit Catalog: An Introduction to CloudKit]()。
+如果你在应用中使用了CloudKit，你可以使用CloudKit web services或者CloudKit JS(一个js库)提供的web接口来为用户提供访问数据。你需要创建相应的schema以实现现有数据库操作增、删、改、查、订阅等web接口的功能。更多内容请查阅[CloudKit JS Reference](https://developer.apple.com/library/prerelease/ios/documentation/CloudKitJS/Reference/CloudKitJavaScriptReference/index.html#//apple_ref/doc/uid/TP40015359),[CloudKit Web Services Reference](https://developer.apple.com/library/prerelease/ios/documentation/DataManagement/Conceptual/CloutKitWebServicesReference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40015240)还有[CloudKit Catalog: An Introduction to CloudKit](https://developer.apple.com/library/prerelease/ios/samplecode/CloudAtlas/Introduction/Intro.html#//apple_ref/doc/uid/TP40014599)。
 
 ####<span id="Foundation">Foundation Framework</span>
 Foundation.framework包含了以下增强：
-* NSBundle资源的按需加载(on-demand loading)APIs
+* [NSBundle](https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/Foundation/Classes/NSBundle_Class/index.html#//apple_ref/occ/cl/NSBundle)资源的按需加载(on-demand loading)APIs
 * Strings文件支持context-dependent variable width strings
-* NSProcessInfo提供了对电量和热量的管理APIs
+* [NSProcessInfo](https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/Foundation/Classes/NSProcessInfo_Class/index.html#//apple_ref/occ/cl/NSProcessInfo)提供了对电量和热量的管理APIs
 
 ####<span id="HealthKit">HealthKit Framework</span>
 HealthKit.framework主要有以下改进：
-* 支持胜利健康和紫外线等领域的健康跟踪。更详细的内容，可以参考[HealthKit Constants Reference]()
-* 支持删除信息的查询和追踪(New support for bulk-deleting entries and tracking deleted entries),更多信息可以参考[HKHealthStore Class Reference]()中的HKDeletedObject，HKAnchoredObjectQuery，deleteObjects:withCompletion:还有deleteObjectsOfType:predicate:withCompletion:。
+* 支持胜利健康和紫外线等领域的健康跟踪。更详细的内容，可以参考[HealthKit Constants Reference](https://developer.apple.com/library/prerelease/ios/documentation/HealthKit/Reference/HealthKit_Constants/index.html)
+* 支持删除信息的查询和追踪(New support for bulk-deleting entries and tracking deleted entries),更多信息可以参考[HKHealthStore Class Reference](https://developer.apple.com/library/prerelease/ios/documentation/HealthKit/Reference/HKHealthStore_Class/index.html#//apple_ref/doc/uid/TP40014708)中的[HKDeletedObject](https://developer.apple.com/library/prerelease/ios/documentation/HealthKit/Reference/HKDeletedObject_ClassReference/index.html#//apple_ref/occ/cl/HKDeletedObject)，[HKAnchoredObjectQuery](https://developer.apple.com/library/prerelease/ios/documentation/HealthKit/Reference/HKAnchoredObjectQuery_Class/index.html#//apple_ref/occ/cl/HKAnchoredObjectQuery)，[deleteObjects:withCompletion:](https://developer.apple.com/library/prerelease/ios/documentation/HealthKit/Reference/HKHealthStore_Class/index.html#//apple_ref/occ/instm/HKHealthStore/deleteObjects:withCompletion:)还有[deleteObjectsOfType:predicate:withCompletion:](https://developer.apple.com/library/prerelease/ios/documentation/HealthKit/Reference/HKHealthStore_Class/index.html#//apple_ref/occ/instm/HKHealthStore/deleteObjectsOfType:predicate:withCompletion:)。
+
+####<span id="LocalAuthenticationFramework">Local Authentication Framework</span>
+LocalAuthentication.framework包含以下改进：
+
+* 新增的当前登记指纹信息的描述，使得当一个指纹登记或者移除的时候，应用可以修改相应的行为。
+* 支持代码方式取消用户提示(prompt)。
+* 支持对keychain访问的control lists的评估和在keychain调用中使用authentication context（Support for evaluating keychain access control lists and the use of an authentication context in keychain calls）。
+* 支持Touch ID匹配重用。通过evaluateAccessControl: 和 [evaluatePolicy:localizedReason:reply:](https://developer.apple.com/library/prerelease/ios/documentation/LocalAuthentication/Reference/LAContext_Class/index.html#//apple_ref/occ/instm/LAContext/evaluatePolicy:localizedReason:reply:)，可以复原当前手机的前一次指纹校验。
 
 ####<span id="MapKit">MapKit Framework</span>
 MapKit.framework引入了一些新的特性来提升用户体验。特别是：
@@ -336,31 +346,31 @@ MapKit.framework引入了一些新的特性来提升用户体验。特别是：
 *  MapKit支持交通路线搜索和路线导航(and launching Maps into transit directions)
 *  Map views支持3D立交桥模式
 *  注释支持完全自定义
-*  MapKit和CLGeocoder的搜索结果支持时区
+*  MapKit和[CLGeocoder](https://developer.apple.com/library/prerelease/ios/documentation/CoreLocation/Reference/CLGeocoder_class/index.html#//apple_ref/occ/cl/CLGeocoder)的搜索结果支持时区
 
 ####<span id="PassKit">PassKit Framework</span>
 PassKit.framework主要增加了一些Apple Pay的支持，例如：
 
 * iOS9中Apple pay支持Discover cards、store debit 和信用卡。更多信息
-* 发卡机构和支付系统可以在他们的应用中直接向apple pay中添加卡。有关更多信息,请参见[PKAddPaymentPassViewController]()。
-* 新的API避免了ApplePay的自动展示，只有当应用在前台且靠近NFC或者RF reader的时候才会自动触发。更多信息可以参考[requestAutomaticPassPresentationSuppressionWithResponseHandler:]()。
+* 发卡机构和支付系统可以在他们的应用中直接向apple pay中添加卡。有关更多信息,请参见[PKAddPaymentPassViewController](https://developer.apple.com/library/prerelease/ios/documentation/PassKit/Reference/PKPaymentRequest_Ref/index.html#//apple_ref/doc/uid/TP40014832)。
+* 新的API避免了ApplePay的自动展示，只有当应用在前台且靠近NFC或者RF reader的时候才会自动触发。更多信息可以参考[requestAutomaticPassPresentationSuppressionWithResponseHandler:](https://developer.apple.com/library/prerelease/ios/documentation/PassKit/Reference/PKAddPaymentPassViewController_Class/index.html#//apple_ref/doc/uid/TP40016116)。
 
 ####<span id="SafariServices">Safari Services Framework</span>
 SafariServices.framework包含了以下改进： 
 SFSafariViewController 可以用来在你的应用内展示web内容，并且可以共享Safari的cookie和其他网站信息，同时也支持很多Safari的其他主要功能：自动填充、Reader等。SFSafariViewController并不像Safari那样，它只展示一页，和一个“完成”按钮，以 便用户可以回到原来应用的场景中。 
-如果你应用中展示的web内容没有太多自定义的需求，可以考虑把原来的WKWebView或者基于UIWebView的内置浏览器替换为SFSafariViewController。
+如果你应用中展示的web内容没有太多自定义的需求，可以考虑把原来的[WKWebView](https://developer.apple.com/library/prerelease/ios/documentation/WebKit/Reference/WKWebView_Ref/index.html#//apple_ref/occ/cl/WKWebView)或者基于[UIWebView](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIWebView_Class/index.html#//apple_ref/occ/cl/UIWebView)的内置浏览器替换为SFSafariViewController。
 
 ####<span id="UIKit">UIKit Framework</span>
 UIKit.framework包含了很多新的提升，例如：
 
-* UIStackView可以帮助你管理一些横向或者纵向的子view。
-* 为了使布局更简单，为UIView(例如leadingAnchor和widthAnchor)、NSLayoutAnchor和NSLayoutDimension提供了新的anchors。
-* 新的布局引导在你采用readable content时，提供合适的边距和定义一个view中内容的绘制区域，详情请见[UILayoutGuide]()
-* UIApplicationDelegate中提供了一个新的函数用来打开(或者编辑)一个文档而不是处理一个文档的副本。应用想要支持open-in-place功能，还需要在Info.plist中配置LSSupportsOpeningDocumentsInPlace的值为yes或者true。
+* [UIStackView](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/index.html#//apple_ref/occ/cl/UIStackView)可以帮助你管理一些横向或者纵向的子view。
+* 为了使布局更简单，为[UIView](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIView_Class/index.html#//apple_ref/occ/cl/UIView)(例如[leadingAnchor](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIView_Class/index.html#//apple_ref/occ/instp/UIView/leadingAnchor)和[widthAnchor](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIView_Class/index.html#//apple_ref/occ/instp/UIView/widthAnchor))、[NSLayoutAnchor](https://developer.apple.com/library/prerelease/ios/documentation/AppKit/Reference/NSLayoutAnchor_ClassReference/index.html#//apple_ref/occ/cl/NSLayoutAnchor)和[NSLayoutDimension](https://developer.apple.com/library/prerelease/ios/documentation/AppKit/Reference/NSLayoutDimension_ClassReference/index.html#//apple_ref/occ/cl/NSLayoutDimension)提供了新的anchors。
+* 新的布局引导在你采用readable content时，提供合适的边距和定义一个view中内容的绘制区域，详情请见[UILayoutGuide](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UILayoutGuide_Class_Reference/index.html#//apple_ref/occ/cl/UILayoutGuide)
+* [UIApplicationDelegate](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/index.html#//apple_ref/occ/intf/UIApplicationDelegate)中提供了一个新的函数用来打开(或者编辑)一个文档而不是处理一个文档的副本。应用想要支持open-in-place功能，还需要在Info.plist中配置LSSupportsOpeningDocumentsInPlace的值为yes或者true。
 * UITextInputAssistantItem类用来来布局shortcuts bar中的bar buttons。
 * touch events有部分改进，比如你可以获取到最后一次刷新显示和触摸预测之间的toch值。
-* UIKit dynamics的升级有，支持不规则边界的碰撞检测、新的UIFieldBehavior类支持自定义多种field types，而UIAttachmentBehavior则支持附加的attachment types。
-* UIUserNotificationAction增加的behavior属性，允许你在用户输入时得到通知。
+* UIKit dynamics的升级有，支持不规则边界的碰撞检测、新的UIFieldBehavior类支持自定义多种field types，而[UIAttachmentBehavior](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIAttachmentBehavior_Class/index.html#//apple_ref/occ/cl/UIAttachmentBehavior)则支持附加的attachment types。
+* [UIUserNotificationAction](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIUserNotificationAction_class/index.html#//apple_ref/occ/cl/UIUserNotificationAction)增加的behavior属性，允许你在用户输入时得到通知。
 * 新的NSDataAsset类使得从内存或者绘图中获取资源更加轻松
 * 所有标准UIKit组件都适的当支持从右到左的语言。此外,导航,手势,collection views和 table cell布局也有相应的支持。
 
@@ -368,7 +378,7 @@ UIKit.framework包含了很多新的提升，例如：
 下列APIs是被弃用的：
 
 * AddressBook和AddressBookUI，可以使用Contacts和Contacts UI替代。
-想获取完整的弃用API列表，可以在这里找到[iOS 9.0 API Diffs]()。 
+想获取完整的弃用API列表，可以在这里找到[iOS 9.0 API Diffs](https://developer.apple.com/library/prerelease/ios/releasenotes/General/iOS90APIDiffs/index.html#//apple_ref/doc/uid/TP40016222)。 
 
 
 
