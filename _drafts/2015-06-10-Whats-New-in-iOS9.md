@@ -1,10 +1,4 @@
----
-layout: post
-title: What's New in iOS9
-description: 这篇文章主要介绍了iOS9里跟开发相关一些主要功能，同时也列出了一些新功能的细节。与iOS相关的最新的问题和发布信息可以参阅iOS9 Release Notes,iOS9中新增的全量API变更信息可以参阅iOS 9.0 API Diffs。与新设备相关的信息可以参阅iOS Device Compatibility Reference。...
-keywords: whats-new-in-iOS9 iOS9 iOS new
----
-
+###What's New in iOS9
 ####Contents
 
 [iOS9](#iOS9)  
